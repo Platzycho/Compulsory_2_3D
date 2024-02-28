@@ -1,10 +1,9 @@
 ﻿  Main.cpp
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(186,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(187,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(191,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(192,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(193,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(194,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(207,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(180,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(181,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(185,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(186,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(187,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(188,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(201,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Compulsory2_3D.vcxproj -> C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\x64\Debug\Compulsory2_3D.exe

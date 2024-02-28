@@ -15,7 +15,8 @@ public:
 
 private:
 	unsigned int VAO, VBO;
-	float vertices[12];
 };
 
 #endif
+
+// float width, float height, float depth

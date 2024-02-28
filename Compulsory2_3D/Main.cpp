@@ -24,7 +24,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 5.0f, 10.0f));
 
 
 
@@ -61,13 +61,13 @@ int main() {
     
     Shader myShader("shader.vs", "shader.fs");
 
-    Cube cube(1, glm::vec3(0.0f, 0.0f, -5.0f), glm::vec3(1.0f));
+    Cube cube(2.0f, 5.0f, 2.0f, 1.0f, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f);
 
-    Cube cubeTwo(2, glm::vec3(5.0f, 0.0f, -5.0f), glm::vec3(2.0f));
-
-    Cube cubeThree(3, glm::vec3(2.5f, 5.0f, -5.0f), glm::vec3(1.5f));
+    
+    Cube cube2(4.0f, 5.0f, 4.0f, 1.0f, 0.0f, 1.0f, 6.0f, 0.0f, 0.0f);
 
     Plane myPlane;
+
 
 	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
 	glm::mat4 view = camera.GetViewMatrix();
@@ -93,51 +93,45 @@ int main() {
 		lastFrame = currentFrame;
 		processInput(window);
 
-		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);/*
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);*/
 
 		myShader.use();
 
-       	//// Pass projection matrix to shader (note: in this case it's fine to do it once per frame)
-        //glUniformMatrix4fv(glGetUniformLocation(myShader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
-    
+      
         // Camera/View transformation
         
 	    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
         glm::mat4 view = camera.GetViewMatrix();/*
         glUniformMatrix4fv(glGetUniformLocation(myShader.ID, "view"), 1, GL_FALSE, glm::value_ptr(view));*/
-        glm::vec3 lightDir = glm::normalize(glm::vec3(-1.0f, -1.0f, -1.0f));
 
         // Create transformations and pass them to the shaders
-        glm::mat4 model = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
+        glm::mat4 model = glm::mat4(1.0f); 
 
         // Rotate the cube over time  
-        rotationAngle += 1.0f;
-        cube.SetRotation(rotationAngle, glm::vec3(0.5f, 0.3f, 0.6f));
-        cubeTwo.SetRotation(rotationAngle, glm::vec3(-0.5f, 0.3f,- 0.6f));
-        cubeThree.SetRotation(rotationAngle, glm::vec3(0.0f, -1.0f, 0.6f));
+        //rotationAngle += 1.0f;
+        //cube.SetRotation(rotationAngle, glm::vec3(0.5f, 0.3f, 0.6f));
+        //cubeTwo.SetRotation(rotationAngle, glm::vec3(-0.5f, 0.3f,- 0.6f));
+        //cubeThree.SetRotation(rotationAngle, glm::vec3(0.0f, -1.0f, 0.6f));
         glUniformMatrix4fv(glGetUniformLocation(myShader.ID, "model"), 1, GL_FALSE, glm::value_ptr(model));
 
         myShader.setMat4("projection", projection);
         myShader.setMat4("view", view);
-        myShader.setMat3("lightDir", lightDir);
 
         // Render the cube
         myPlane.Draw();
         cube.Draw(myShader);
-        cubeTwo.Draw(myShader);
-        cubeThree.Draw(myShader);
+        cube2.Draw(myShader);
 
 
-        // Swap buffers and poll IO events
         glfwSwapBuffers(window);
         glfwPollEvents();
 		
 	}
 
     cube.CleanUp();
-    cubeTwo.CleanUp();
-    cubeThree.CleanUp();
+    cube2.CleanUp();
 	glfwTerminate();
 	return 0;
 }
@@ -148,16 +142,16 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     
     CallbackData* data = static_cast<CallbackData*>(glfwGetWindowUserPointer(window));
 
-    // Now you can use data->myShader and data->camera as needed
      if (data != nullptr && data->myShader != nullptr) {
         glm::mat4 projection = glm::perspective(glm::radians(data->myCamera->Zoom), (float)width / (float)height, 0.1f, 100.0f);
-        data->myShader->use(); // Make sure the shader is being used before setting uniforms
+        data->myShader->use(); 
         glUniformMatrix4fv(glGetUniformLocation(data->myShader->ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     }
 }
 
 void processInput(GLFWwindow* window)
 {	
+    //Camera movement
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(FORWARD, deltaTime);
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
