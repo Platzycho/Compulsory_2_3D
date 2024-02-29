@@ -136,6 +136,7 @@
     <ClInclude Include="Dependencies\includes\GLFW\glfw3.h" />
     <ClInclude Include="Dependencies\includes\GLFW\glfw3native.h" />
     <ClInclude Include="Dependencies\includes\KHR\khrplatform.h" />
+    <ClInclude Include="House.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="Shader.h" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="House.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="Shader.cpp" />

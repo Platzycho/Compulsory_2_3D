@@ -1,9 +1,11 @@
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 #include "Cube.h"
 #include "Shader.h"
 
-Cube::Cube(float width, float height, float depth, 
-         float r, float g, float b, 
-         float posX, float posY, float posZ) : position(glm::vec3(posX, posY, posZ)), scale(glm::vec3(1.0f, 1.0f, 1.0f))
+Cube::Cube(float width, float height, float depth, float r, float g, float b, float posX, float posY, float posZ) : position(glm::vec3(posX, posY, posZ)), scale(glm::vec3(1.0f, 1.0f, 1.0f))
 {
     GenerateCube(width, height, depth, r, g, b);
     setupMesh();
@@ -14,6 +16,7 @@ Cube::~Cube()
 {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
 }
 
 void Cube::Draw(Shader& shader)
@@ -28,7 +31,7 @@ void Cube::Draw(Shader& shader)
 
 void Cube::Update()
 {
-
+    
 }
 
 void Cube::SetRotation(float angle, glm::vec3 axis)
@@ -53,7 +56,6 @@ void Cube::GenerateCube(float w, float h, float d, float r, float g, float b) {
 
     glm::vec3 color = {r, g, b};
 
-    // Vertices of a cube, defined relative to origin
     vertices = {
         // Front face
         {{-hw, -hh,  hd}, color}, // Bottom Left
@@ -87,7 +89,6 @@ void Cube::GenerateCube(float w, float h, float d, float r, float g, float b) {
         {{-hw, -hh,  hd}, color}, // Top Left
     };
 
-    // Indices remain unchanged, as they define how vertices are connected into triangles
     indices = {
         // Front
         0, 1, 2, 2, 3, 0,

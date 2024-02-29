@@ -5,6 +5,12 @@ void Shader::use()
 	glUseProgram(ID);
 }
 
+void Shader::generateShader(const char* vertexPath, const char* fragmentPath)
+{
+	Shader(vertexPath, fragmentPath);
+}
+
+
 void Shader::setBool(const std::string& name, bool value) const
 {
 	glUniform1i(glGetUniformLocation(ID, name.c_str()), (int)value);

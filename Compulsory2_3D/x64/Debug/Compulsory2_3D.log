@@ -1,9 +1,50 @@
-﻿  Main.cpp
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(180,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(181,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(185,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(186,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(187,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(188,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(201,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  Compulsory2_3D.vcxproj -> C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\x64\Debug\Compulsory2_3D.exe
+﻿  House.cpp
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(30,7): error C3646: 'backWall': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(30,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(31,7): error C3646: 'leftWall': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(31,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(32,7): error C3646: 'rightWall': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(33,7): error C3646: 'frontLeftWall': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(33,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(34,7): error C3646: 'frontRightWall': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(34,21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(35,7): error C3646: 'aboveDoorWall': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(35,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(36,7): error C3646: 'frontRoof': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(36,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(37,7): error C3646: 'backRoof': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(37,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(38,7): error C3646: 'leftRoof': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(38,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(39,7): error C3646: 'rightRoof': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(39,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(40,7): error C3646: 'door': unknown override specifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(40,11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(12,17): error C2614: 'House': illegal member initialization: 'backWall' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(13,5): error C2614: 'House': illegal member initialization: 'leftWall' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(14,5): error C2614: 'House': illegal member initialization: 'rightWall' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(15,5): error C2614: 'House': illegal member initialization: 'frontLeftWall' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(16,5): error C2614: 'House': illegal member initialization: 'frontRightWall' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(17,5): error C2614: 'House': illegal member initialization: 'aboveDoorWall' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(18,5): error C2614: 'House': illegal member initialization: 'frontRoof' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(19,5): error C2614: 'House': illegal member initialization: 'backRoof' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(20,5): error C2614: 'House': illegal member initialization: 'leftRoof' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(21,5): error C2614: 'House': illegal member initialization: 'rightRoof' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(22,5): error C2614: 'House': illegal member initialization: 'door' is not a base or member
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(49,35): error C2065: 'backWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(49,18): error C2672: 'glm::translate': no matching overloaded function found
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Dependencies\includes\glm\ext\matrix_transform.hpp(64,46): message : could be 'glm::mat<4,4,T,Q> glm::translate(const glm::mat<4,4,T,Q> &,const glm::vec<3,T,Q> &)'
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(49,18): message : 'glm::mat<4,4,T,Q> glm::translate(const glm::mat<4,4,T,Q> &,const glm::vec<3,T,Q> &)': expects 2 arguments - 1 provided
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(51,5): error C2065: 'backWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(52,5): error C2065: 'backWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(53,5): error C2065: 'frontLeftWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(54,5): error C2065: 'frontRightWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(55,5): error C2065: 'aboveDoorWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(56,5): error C2065: 'door': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(57,5): error C2065: 'frontRoof': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(58,5): error C2065: 'backRoof': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(59,5): error C2065: 'leftRoof': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(60,5): error C2065: 'rightRoof': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(61,5): error C2065: 'leftWall': undeclared identifier
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(62,5): error C2065: 'rightWall': undeclared identifier

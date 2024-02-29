@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "Cube.h"
 #include "Plane.h"
+#include "House.h"
 #include <iostream>
 #include <algorithm>
 #include <cmath>
@@ -25,8 +26,6 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 Camera camera(glm::vec3(0.0f, 5.0f, 10.0f));
-
-
 
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
@@ -57,16 +56,16 @@ int main() {
 	glViewport(0, 0, 800, 600);
 
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-    
+   
     Shader myShader("shader.vs", "shader.fs");
 
     Cube cube(2.0f, 5.0f, 2.0f, 1.0f, 0.0f, 0.5f, 0.0f, 0.0f, 0.0f);
-
-    
-    Cube cube2(4.0f, 5.0f, 4.0f, 1.0f, 0.0f, 1.0f, 6.0f, 0.0f, 0.0f);
+ 
+    Cube cube2(4.0f, 5.0f, 4.0f, 1.0f, 0.0f, 1.0f, -6.0f, 0.0f, 0.0f);
 
     Plane myPlane;
+
+    House myHouse;
 
 
 	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
@@ -93,7 +92,7 @@ int main() {
 		lastFrame = currentFrame;
 		processInput(window);
 
-		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+		glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);/*
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);*/
 
@@ -120,9 +119,11 @@ int main() {
         myShader.setMat4("view", view);
 
         // Render the cube
+        myHouse.Draw(myShader);
         myPlane.Draw();
         cube.Draw(myShader);
         cube2.Draw(myShader);
+        
 
 
         glfwSwapBuffers(window);
@@ -132,6 +133,7 @@ int main() {
 
     cube.CleanUp();
     cube2.CleanUp();
+    myHouse.~House();
 	glfwTerminate();
 	return 0;
 }
