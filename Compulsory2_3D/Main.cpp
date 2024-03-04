@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "Camera.h"
 #include "Cube.h"
+#include "Trophy.h"
 #include "Plane.h"
 #include <iostream>
 #include <algorithm>
@@ -77,7 +78,7 @@ int main() {
 
     Cube frontRightWall(2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 1.75f, 1.0f, 2.0f); 
 
-    Cube aboveDoorWall(1.0f, 0.5f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.75f, 2.0f); 
+    Cube aboveDoorWall(1.0f, 0.5f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.8f, 2.0f); 
 
     Cube flatRoof(5.7f, 0.3f, 3.7f, 0.349f, 0.196f, 0.0f, 0.0f, 2.0f, 0.0f); 
 
@@ -85,7 +86,9 @@ int main() {
 
     Cube myPlayer(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 4.0f, 0.15f, 4.0f);
 
+    Trophy trophies; 
 
+    std::cout << Cube::cubes.size() << std::endl;
      
     Plane myPlane; 
 
@@ -148,11 +151,22 @@ int main() {
 
         myPlayer.Draw(myShader);
 
-      /*  std::cout << camera.Position.x  << ", " << camera.Position.y << ", " << camera.Position.z <<  std::endl;*/
+        trophies.Draw(myShader);
 
+      /*  std::cout << camera.Position.x  << ", " << camera.Position.y << ", " << camera.Position.z <<  std::endl;*/
+          for(size_t i = 0; i < Cube::cubes.size(); ++i) {
+          for(size_t j = i + 1; j < Cube::cubes.size(); ++j) {
+            if(Cube::collisionDetection(Cube::cubes[i], Cube::cubes[j])) {
+
+            // Handle collision
+               
+        }
+    }
+}
 
         glfwSwapBuffers(window);
         glfwPollEvents();
+       
 		
 	}
 
@@ -167,6 +181,8 @@ int main() {
     door.CleanUp();
     flatRoof.CleanUp(); 
     myPlayer.~Cube(); 
+
+  
      
 
 	glfwTerminate();

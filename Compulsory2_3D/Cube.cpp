@@ -3,14 +3,16 @@
 #include "Cube.h"
 #include "Shader.h"
 
+std::vector<CubeCollision> Cube::cubes = {};
+
 Cube::Cube(float width, float height, float depth, float r, float g, float b, float posX, float posY, float posZ) : position(glm::vec3(posX, posY, posZ)), scale(glm::vec3(1.0f, 1.0f, 1.0f))
 {
     GenerateCube(width, height, depth, r, g, b);
     setupMesh();
     rotationAngle = 0;
     rotationAxis = glm::vec3(1.0f, 1.0f, 1.0f);
-
     updateModelMatrix();
+    cubes.emplace_back(glm::vec3(position), glm::vec3(scale));
 }
 
 Cube::~Cube()
@@ -27,6 +29,7 @@ void Cube::Draw(Shader& shader)
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
+    
 
 }
 
@@ -34,6 +37,8 @@ void Cube::UpdatePosition(glm::vec3 direction)
 {
     position = position + direction*0.3f;
     updateModelMatrix();
+
+    Cube::cubes[8].position = position;
 }
 
 void Cube::PlayerInput(GLFWwindow* window)
@@ -43,25 +48,25 @@ void Cube::PlayerInput(GLFWwindow* window)
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {       
         UpdatePosition(glm::vec3(0.0f, 0.0f, -0.1f));
-        rotationAngle-=1; 
+        /*rotationAngle-=1; */
         updateModelMatrix();   
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {  
         UpdatePosition(glm::vec3(0.0f, 0.0f, 0.1f));           
-        rotationAngle+=1;
+        /*rotationAngle+=1;*/
         updateModelMatrix();  
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {   
         UpdatePosition(glm::vec3(-0.1f, 0.0f, 0.0f));
-        rotationAngle+=1;
+        //rotationAngle+=1;
         updateModelMatrix();  
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {    
         UpdatePosition(glm::vec3(0.1f, 0.0f, 0.0f));         
-        rotationAngle-=1;
+        //rotationAngle-=1;
         updateModelMatrix();  
     }
     /*if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
@@ -96,8 +101,19 @@ void Cube::CleanUp()
     glDeleteBuffers(1, &EBO);
 }
 
-void Cube::collisionDetection()
+bool Cube::collisionDetection(const CubeCollision& cube1, const CubeCollision& cube2)
 {
+    glm::vec3 minA = cube1.position - cube1.size * 0.5f;
+    glm::vec3 maxA = cube1.position + cube1.size * 0.5f;
+
+    glm::vec3 minB = cube2.position - cube2.size * 0.5f;
+    glm::vec3 maxB = cube2.position + cube2.size * 0.5f;
+
+    bool colX = minA.x <= maxB.x && maxA.x >= minB.x;
+    bool colY = minA.y <= maxB.y && maxA.y >= minB.y;
+    bool colZ = minA.z <= maxB.z && maxA.z >= minB.z;
+
+    return colX && colY && colZ;
 }
 
 void Cube::GenerateCube(float w, float h, float d, float r, float g, float b) {

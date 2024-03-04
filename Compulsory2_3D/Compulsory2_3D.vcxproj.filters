@@ -39,6 +39,9 @@
     <ClInclude Include="Plane.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Trophy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Dependencies\libs\GLFW\glfw3.dll" />
@@ -67,6 +70,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Trophy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

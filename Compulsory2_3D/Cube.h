@@ -1,7 +1,6 @@
 #ifndef CUBE_H
 #define CUBE_H
 
-
 #include <vector>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
@@ -10,6 +9,12 @@
 
 struct Vertex {
 	glm::vec3 Position, Color;
+};
+
+struct CubeCollision {
+	glm::vec3 position, size;
+
+	CubeCollision(glm::vec3 pos, glm::vec3 sz) : position(pos), size(sz) {}
 };
 
 class Shader;
@@ -27,7 +32,9 @@ public:
 	void SetRotation(float angle, glm::vec3 axis);
 	void CleanUp();
 	void GenerateCube(float w, float h, float d, float r, float g, float b);
-	void collisionDetection();
+	static bool collisionDetection(const CubeCollision& cube1, const CubeCollision& cube2);
+
+	static std::vector<CubeCollision> cubes;
 	
 
 private:
