@@ -1,50 +1,32 @@
-﻿  House.cpp
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(30,7): error C3646: 'backWall': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(30,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(31,7): error C3646: 'leftWall': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(31,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(32,7): error C3646: 'rightWall': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(32,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(33,7): error C3646: 'frontLeftWall': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(33,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(34,7): error C3646: 'frontRightWall': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(34,21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(35,7): error C3646: 'aboveDoorWall': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(35,20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(36,7): error C3646: 'frontRoof': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(36,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(37,7): error C3646: 'backRoof': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(37,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(38,7): error C3646: 'leftRoof': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(38,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(39,7): error C3646: 'rightRoof': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(39,16): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(40,7): error C3646: 'door': unknown override specifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.h(40,11): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(12,17): error C2614: 'House': illegal member initialization: 'backWall' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(13,5): error C2614: 'House': illegal member initialization: 'leftWall' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(14,5): error C2614: 'House': illegal member initialization: 'rightWall' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(15,5): error C2614: 'House': illegal member initialization: 'frontLeftWall' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(16,5): error C2614: 'House': illegal member initialization: 'frontRightWall' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(17,5): error C2614: 'House': illegal member initialization: 'aboveDoorWall' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(18,5): error C2614: 'House': illegal member initialization: 'frontRoof' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(19,5): error C2614: 'House': illegal member initialization: 'backRoof' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(20,5): error C2614: 'House': illegal member initialization: 'leftRoof' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(21,5): error C2614: 'House': illegal member initialization: 'rightRoof' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(22,5): error C2614: 'House': illegal member initialization: 'door' is not a base or member
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(49,35): error C2065: 'backWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(49,18): error C2672: 'glm::translate': no matching overloaded function found
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Dependencies\includes\glm\ext\matrix_transform.hpp(64,46): message : could be 'glm::mat<4,4,T,Q> glm::translate(const glm::mat<4,4,T,Q> &,const glm::vec<3,T,Q> &)'
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(49,18): message : 'glm::mat<4,4,T,Q> glm::translate(const glm::mat<4,4,T,Q> &,const glm::vec<3,T,Q> &)': expects 2 arguments - 1 provided
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(51,5): error C2065: 'backWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(52,5): error C2065: 'backWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(53,5): error C2065: 'frontLeftWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(54,5): error C2065: 'frontRightWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(55,5): error C2065: 'aboveDoorWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(56,5): error C2065: 'door': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(57,5): error C2065: 'frontRoof': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(58,5): error C2065: 'backRoof': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(59,5): error C2065: 'leftRoof': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(60,5): error C2065: 'rightRoof': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(61,5): error C2065: 'leftWall': undeclared identifier
-C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\House.cpp(62,5): error C2065: 'rightWall': undeclared identifier
+﻿  Cube.cpp
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Cube.cpp(55,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Main.cpp
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(206,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(207,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(211,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(212,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(213,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(214,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Main.cpp(227,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  PhysicsControll.cpp
+  Player.cpp
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\Player.cpp(28,46): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+Cube.obj : error LNK2019: unresolved external symbol "void * __cdecl btAlignedAllocInternal(unsigned __int64,int)" (?btAlignedAllocInternal@@YAPEAX_KH@Z) referenced in function "public: static void * __cdecl btBoxShape::operator new(unsigned __int64)" (??2btBoxShape@@SAPEAX_K@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "void * __cdecl btAlignedAllocInternal(unsigned __int64,int)" (?btAlignedAllocInternal@@YAPEAX_KH@Z)
+Cube.obj : error LNK2019: unresolved external symbol "void __cdecl btAlignedFreeInternal(void *)" (?btAlignedFreeInternal@@YAXPEAX@Z) referenced in function "public: static void __cdecl btBoxShape::operator delete(void *)" (??3btBoxShape@@SAXPEAX@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "void __cdecl btAlignedFreeInternal(void *)" (?btAlignedFreeInternal@@YAXPEAX@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btCollisionDispatcher::btCollisionDispatcher(class btCollisionConfiguration *)" (??0btCollisionDispatcher@@QEAA@PEAVbtCollisionConfiguration@@@Z) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "public: __cdecl btCollisionDispatcher::btCollisionDispatcher(class btCollisionConfiguration *)" (??0btCollisionDispatcher@@QEAA@PEAVbtCollisionConfiguration@@@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btBoxShape::btBoxShape(class btVector3 const &)" (??0btBoxShape@@QEAA@AEBVbtVector3@@@Z) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btDefaultCollisionConfiguration::btDefaultCollisionConfiguration(struct btDefaultCollisionConstructionInfo const &)" (??0btDefaultCollisionConfiguration@@QEAA@AEBUbtDefaultCollisionConstructionInfo@@@Z) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "public: __cdecl btDefaultCollisionConfiguration::btDefaultCollisionConfiguration(struct btDefaultCollisionConstructionInfo const &)" (??0btDefaultCollisionConfiguration@@QEAA@AEBUbtDefaultCollisionConstructionInfo@@@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btDbvtBroadphase::btDbvtBroadphase(class btOverlappingPairCache *)" (??0btDbvtBroadphase@@QEAA@PEAVbtOverlappingPairCache@@@Z) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "public: __cdecl btDbvtBroadphase::btDbvtBroadphase(class btOverlappingPairCache *)" (??0btDbvtBroadphase@@QEAA@PEAVbtOverlappingPairCache@@@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btDiscreteDynamicsWorld::btDiscreteDynamicsWorld(class btDispatcher *,class btBroadphaseInterface *,class btConstraintSolver *,class btCollisionConfiguration *)" (??0btDiscreteDynamicsWorld@@QEAA@PEAVbtDispatcher@@PEAVbtBroadphaseInterface@@PEAVbtConstraintSolver@@PEAVbtCollisionConfiguration@@@Z) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "public: __cdecl btDiscreteDynamicsWorld::btDiscreteDynamicsWorld(class btDispatcher *,class btBroadphaseInterface *,class btConstraintSolver *,class btCollisionConfiguration *)" (??0btDiscreteDynamicsWorld@@QEAA@PEAVbtDispatcher@@PEAVbtBroadphaseInterface@@PEAVbtConstraintSolver@@PEAVbtCollisionConfiguration@@@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btRigidBody::btRigidBody(struct btRigidBody::btRigidBodyConstructionInfo const &)" (??0btRigidBody@@QEAA@AEBUbtRigidBodyConstructionInfo@0@@Z) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+Cube.obj : error LNK2019: unresolved external symbol "public: __cdecl btSequentialImpulseConstraintSolver::btSequentialImpulseConstraintSolver(void)" (??0btSequentialImpulseConstraintSolver@@QEAA@XZ) referenced in function "public: __cdecl Cube::Cube(float,float,float,float,float,float,float,float,float)" (??0Cube@@QEAA@MMMMMMMMM@Z)
+PhysicsControll.obj : error LNK2001: unresolved external symbol "public: __cdecl btSequentialImpulseConstraintSolver::btSequentialImpulseConstraintSolver(void)" (??0btSequentialImpulseConstraintSolver@@QEAA@XZ)
+C:\Users\Nesli\OneDrive\Dokumenter\3D Prog\Compulsory_2\Compulsory2_3D\x64\Debug\Compulsory2_3D.exe : fatal error LNK1120: 9 unresolved externals

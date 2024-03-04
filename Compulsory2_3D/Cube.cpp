@@ -1,7 +1,5 @@
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
+
+#include <iostream>
 #include "Cube.h"
 #include "Shader.h"
 
@@ -9,6 +7,33 @@ Cube::Cube(float width, float height, float depth, float r, float g, float b, fl
 {
     GenerateCube(width, height, depth, r, g, b);
     setupMesh();
+    rotationAngle = 0;
+    rotationAxis = glm::vec3(1.0f, 1.0f, 1.0f);
+    collisionShape = new btBoxShape(btVector3(1.0f, 1.0f, 1.0f));
+    btTransform startTransform;
+    startTransform.setIdentity();
+    startTransform.setOrigin(btVector3(position.x, position.y, position.z));
+
+    motionState = new btDefaultMotionState(startTransform);
+
+    btScalar mass = 0.5f;
+    btVector3 localInertia(0, 0, 0);
+    collisionShape->calculateLocalInertia(mass, localInertia);
+
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, collisionShape, localInertia);
+    rigidBody = new btRigidBody(rbInfo);
+
+    btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
+    btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
+    btBroadphaseInterface* broadphase = new btDbvtBroadphase();
+    btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver;
+
+    btDiscreteDynamicsWorld* dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
+
+    dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
+
+    initializePhysics(dynamicsWorld);
+
     updateModelMatrix();
 }
 
@@ -17,6 +42,9 @@ Cube::~Cube()
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
+    delete rigidBody;
+    delete motionState;
+    delete collisionShape;
 }
 
 void Cube::Draw(Shader& shader)
@@ -26,19 +54,67 @@ void Cube::Draw(Shader& shader)
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
+    updateFromPhysics();
 
 }
 
-void Cube::Update()
+void Cube::UpdatePosition(glm::vec3 direction)
+{
+    position = position + direction*0.3f;
+    updateModelMatrix();
+}
+
+void Cube::PlayerInput(GLFWwindow* window)
 {
     
+
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+    {       
+        UpdatePosition(glm::vec3(0.0f, 0.0f, -0.1f));
+        rotationAngle-=1; 
+        updateModelMatrix();   
+    }
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+    {  
+        UpdatePosition(glm::vec3(0.0f, 0.0f, 0.1f));           
+        rotationAngle+=1;
+        updateModelMatrix();  
+    }
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+    {   
+        UpdatePosition(glm::vec3(-0.1f, 0.0f, 0.0f));
+        rotationAngle+=1;
+        updateModelMatrix();  
+    }
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+    {    
+        UpdatePosition(glm::vec3(0.1f, 0.0f, 0.0f));         
+        rotationAngle-=1;
+        updateModelMatrix();  
+    }
+    /*if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS)
+        ;
+    if (glfwGetKey(window, GLFW_KEY_Q) == GLFW_PRESS)
+        ;*/
 }
 
 void Cube::SetRotation(float angle, glm::vec3 axis)
 {
-    rotationAngle = angle;
-    rotationAxis = axis;
-    updateModelMatrix();
+
+     rotationAngle = angle; 
+     rotationAxis = axis; 
+     updateModelMatrix();
+    /*for(int i = 0; i < angle; i++){
+        rotationAngle = i; 
+        rotationAxis = axis; 
+        updateModelMatrix();
+    }
+
+    for(int j = 0; j > angle; j--){
+        rotationAngle = j; 
+        rotationAxis = axis; 
+        updateModelMatrix(); 
+    }*/
 }
 
 void Cube::CleanUp()
@@ -105,6 +181,46 @@ void Cube::GenerateCube(float w, float h, float d, float r, float g, float b) {
     };
 }
 
+void Cube::initializePhysics(btDiscreteDynamicsWorld* dynamicsWorld)
+{
+ collisionShape = new btBoxShape(btVector3(scale.x * 0.5f, scale.y * 0.5f, scale.z * 0.5f));
+
+    btTransform startTransform;
+    startTransform.setIdentity();
+    startTransform.setOrigin(btVector3(position.x, position.y, position.z));
+
+    btScalar mass = 1.0f; 
+    btVector3 localInertia(0, 0, 0);
+
+    if (mass != 0.f) {
+        collisionShape->calculateLocalInertia(mass, localInertia);
+    }
+
+    motionState = new btDefaultMotionState(startTransform);
+    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, collisionShape, localInertia);
+    rigidBody = new btRigidBody(rbInfo);
+
+    dynamicsWorld->addRigidBody(rigidBody);
+}
+
+void Cube::updateFromPhysics()
+{
+    btTransform trans;
+    if (rigidBody && rigidBody->getMotionState()) {
+        rigidBody->getMotionState()->getWorldTransform(trans);
+
+        position.x = trans.getOrigin().getX();
+        position.y = trans.getOrigin().getY();
+        position.z = trans.getOrigin().getZ();
+
+        btQuaternion rot = trans.getRotation();
+
+        updateModelMatrix();
+    }
+}
+
+
+
 void Cube::setupMesh()
 {
     glGenVertexArrays(1, &VAO);
@@ -118,7 +234,6 @@ void Cube::setupMesh()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), indices.data(), GL_STATIC_DRAW);
        
-	//Position
 	// Position attribute
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Position));
     glEnableVertexAttribArray(0);
@@ -134,7 +249,7 @@ void Cube::setupMesh()
 void Cube::updateModelMatrix()
 {
     modelMatrix = glm::mat4(1.0f);
-    modelMatrix = glm::translate(modelMatrix, position);/*
-    modelMatrix = glm::rotate(modelMatrix, glm::radians(rotationAngle), rotationAxis);*/
+    modelMatrix = glm::translate(modelMatrix, position);
+    modelMatrix = glm::rotate(modelMatrix, glm::radians(rotationAngle), rotationAxis);
     modelMatrix = glm::scale(modelMatrix, scale);
 }

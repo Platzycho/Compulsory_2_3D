@@ -6,10 +6,10 @@
 
 float verticesPlane[] = {
 //  x     y/up  z/inwards
-    -10.5f, 0.0f, -10.5f, 0.0f, 0.1f, 0.0f,//Bottom left
-    10.5f, 0.0f, -10.5f, 0.0f, 0.1f, 0.0f,// Bottom right
-    10.5f, 0.0f, 10.5f, 0.0f, 0.1f, 0.0f,// Top right
-    -10.5f, 0.0f, 10.5f, 0.0f, 0.1f, 0.0f // Top Left
+    -15.5f, 0.0f, -15.5f, 0.0f, 0.1f, 0.0f,//Bottom left
+    15.5f, 0.0f, -15.5f, 0.0f, 0.1f, 0.0f,// Bottom right
+    15.5f, 0.0f, 15.5f, 0.0f, 0.1f, 0.0f,// Top right
+    -15.5f, 0.0f, 15.5f, 0.0f, 0.1f, 0.0f // Top Left
     };
 
 Plane::Plane()
