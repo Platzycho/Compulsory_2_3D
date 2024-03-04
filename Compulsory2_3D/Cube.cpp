@@ -9,30 +9,6 @@ Cube::Cube(float width, float height, float depth, float r, float g, float b, fl
     setupMesh();
     rotationAngle = 0;
     rotationAxis = glm::vec3(1.0f, 1.0f, 1.0f);
-    collisionShape = new btBoxShape(btVector3(1.0f, 1.0f, 1.0f));
-    btTransform startTransform;
-    startTransform.setIdentity();
-    startTransform.setOrigin(btVector3(position.x, position.y, position.z));
-
-    motionState = new btDefaultMotionState(startTransform);
-
-    btScalar mass = 0.5f;
-    btVector3 localInertia(0, 0, 0);
-    collisionShape->calculateLocalInertia(mass, localInertia);
-
-    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, collisionShape, localInertia);
-    rigidBody = new btRigidBody(rbInfo);
-
-    btDefaultCollisionConfiguration* collisionConfiguration = new btDefaultCollisionConfiguration();
-    btCollisionDispatcher* dispatcher = new btCollisionDispatcher(collisionConfiguration);
-    btBroadphaseInterface* broadphase = new btDbvtBroadphase();
-    btSequentialImpulseConstraintSolver* solver = new btSequentialImpulseConstraintSolver;
-
-    btDiscreteDynamicsWorld* dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, broadphase, solver, collisionConfiguration);
-
-    dynamicsWorld->setGravity(btVector3(0, -9.81f, 0));
-
-    initializePhysics(dynamicsWorld);
 
     updateModelMatrix();
 }
@@ -42,9 +18,6 @@ Cube::~Cube()
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
-    delete rigidBody;
-    delete motionState;
-    delete collisionShape;
 }
 
 void Cube::Draw(Shader& shader)
@@ -54,7 +27,6 @@ void Cube::Draw(Shader& shader)
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
-    updateFromPhysics();
 
 }
 
@@ -66,7 +38,7 @@ void Cube::UpdatePosition(glm::vec3 direction)
 
 void Cube::PlayerInput(GLFWwindow* window)
 {
-    
+    rotationAxis = glm::vec3(0.0f, 1.0f, 0.0f);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {       
@@ -122,6 +94,10 @@ void Cube::CleanUp()
     glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
     glDeleteBuffers(1, &EBO);
+}
+
+void Cube::collisionDetection()
+{
 }
 
 void Cube::GenerateCube(float w, float h, float d, float r, float g, float b) {
@@ -180,45 +156,6 @@ void Cube::GenerateCube(float w, float h, float d, float r, float g, float b) {
         20, 21, 22, 22, 23, 20
     };
 }
-
-void Cube::initializePhysics(btDiscreteDynamicsWorld* dynamicsWorld)
-{
- collisionShape = new btBoxShape(btVector3(scale.x * 0.5f, scale.y * 0.5f, scale.z * 0.5f));
-
-    btTransform startTransform;
-    startTransform.setIdentity();
-    startTransform.setOrigin(btVector3(position.x, position.y, position.z));
-
-    btScalar mass = 1.0f; 
-    btVector3 localInertia(0, 0, 0);
-
-    if (mass != 0.f) {
-        collisionShape->calculateLocalInertia(mass, localInertia);
-    }
-
-    motionState = new btDefaultMotionState(startTransform);
-    btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, motionState, collisionShape, localInertia);
-    rigidBody = new btRigidBody(rbInfo);
-
-    dynamicsWorld->addRigidBody(rigidBody);
-}
-
-void Cube::updateFromPhysics()
-{
-    btTransform trans;
-    if (rigidBody && rigidBody->getMotionState()) {
-        rigidBody->getMotionState()->getWorldTransform(trans);
-
-        position.x = trans.getOrigin().getX();
-        position.y = trans.getOrigin().getY();
-        position.z = trans.getOrigin().getZ();
-
-        btQuaternion rot = trans.getRotation();
-
-        updateModelMatrix();
-    }
-}
-
 
 
 void Cube::setupMesh()

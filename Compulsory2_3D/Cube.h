@@ -3,7 +3,6 @@
 
 
 #include <vector>
-#include "bullet/btBulletDynamicsCommon.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
@@ -28,12 +27,7 @@ public:
 	void SetRotation(float angle, glm::vec3 axis);
 	void CleanUp();
 	void GenerateCube(float w, float h, float d, float r, float g, float b);
-	void initializePhysics(btDiscreteDynamicsWorld* dynamicsWorld);
-	void updateFromPhysics();
-
-	btCollisionShape* collisionShape;
-	btDefaultMotionState* motionState;
-	btRigidBody* rigidBody;
+	void collisionDetection();
 	
 
 private:
