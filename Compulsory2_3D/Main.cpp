@@ -86,6 +86,9 @@ int main() {
 
     Cube myPlayer(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 4.0f, 0.15f, 4.0f);
 
+    Cube npcCharacter(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 3.0f, 0.15f, 3.0f);
+
+
     Trophy trophies; 
 
     std::cout << Cube::cubes.size() << std::endl;
@@ -117,7 +120,7 @@ int main() {
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		processInput(window);
-        myPlayer.PlayerInput(window);
+        myPlayer.PlayerInput(window, deltaTime);
 
 		glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);/*
@@ -146,10 +149,21 @@ int main() {
         aboveDoorWall.Draw(myShader);
         door.Draw(myShader);
         flatRoof.Draw(myShader);
+        npcCharacter.Draw(myShader);
+        
 
         myPlayer.Draw(myShader);
 
         trophies.Draw(myShader);
+
+        /*if (Cube::xValue <= 0.f && Cube::xValue > -5.f) {
+            npcCharacter.npcMovement(deltaTime);
+
+        }*/
+      /*  else if (Cube::xValue >= -5.f && Cube::xValue < 0.f) {
+
+            npcCharacter.npcMovementReverse(deltaTime);
+        }*/
 
       /*  std::cout << camera.Position.x  << ", " << camera.Position.y << ", " << camera.Position.z <<  std::endl;*/
           for(size_t i = 0; i < Cube::cubes.size(); ++i) {
@@ -161,7 +175,6 @@ int main() {
         }
     }
 }
-
         glfwSwapBuffers(window);
         glfwPollEvents();
        
@@ -178,10 +191,8 @@ int main() {
     aboveDoorWall.CleanUp();
     door.CleanUp();
     flatRoof.CleanUp(); 
+    npcCharacter.~Cube();
     myPlayer.~Cube(); 
-
-  
-     
 
 	glfwTerminate();
 	return 0;

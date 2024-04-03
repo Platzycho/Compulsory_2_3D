@@ -28,13 +28,17 @@ public:
 	~Cube();
 	void Draw(Shader& shader);
 	void UpdatePosition(glm::vec3 direction);
-	void PlayerInput(GLFWwindow* window);
+	void PlayerInput(GLFWwindow* window, float deltaTime);
 	void SetRotation(float angle, glm::vec3 axis);
+	void npcMovement(float deltaTime);
+	void npcMovementReverse(float deltaTime);
 	void CleanUp();
 	void GenerateCube(float w, float h, float d, float r, float g, float b);
 	static bool collisionDetection(const CubeCollision& cube1, const CubeCollision& cube2);
 
 	static std::vector<CubeCollision> cubes;
+
+	static float xValue;
 	
 
 private:

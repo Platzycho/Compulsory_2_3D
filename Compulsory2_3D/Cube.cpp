@@ -5,6 +5,8 @@
 
 std::vector<CubeCollision> Cube::cubes = {};
 
+static float xValue = 0;
+
 Cube::Cube(float width, float height, float depth, float r, float g, float b, float posX, float posY, float posZ) : position(glm::vec3(posX, posY, posZ)), scale(glm::vec3(1.0f, 1.0f, 1.0f))
 {
     GenerateCube(width, height, depth, r, g, b);
@@ -29,8 +31,6 @@ void Cube::Draw(Shader& shader)
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
-    
-
 }
 
 void Cube::UpdatePosition(glm::vec3 direction)
@@ -41,31 +41,31 @@ void Cube::UpdatePosition(glm::vec3 direction)
     Cube::cubes[8].position = position;
 }
 
-void Cube::PlayerInput(GLFWwindow* window)
+void Cube::PlayerInput(GLFWwindow* window, float deltaTime)
 {
     rotationAxis = glm::vec3(0.0f, 1.0f, 0.0f);
 
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {       
-        UpdatePosition(glm::vec3(0.0f, 0.0f, -0.1f));
+        UpdatePosition(glm::vec3(0.0f, 0.0f, -10.f) * deltaTime);
         /*rotationAngle-=1; */
         updateModelMatrix();   
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
     {  
-        UpdatePosition(glm::vec3(0.0f, 0.0f, 0.1f));           
+        UpdatePosition(glm::vec3(0.0f, 0.0f, 10.f) * deltaTime);           
         /*rotationAngle+=1;*/
         updateModelMatrix();  
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
     {   
-        UpdatePosition(glm::vec3(-0.1f, 0.0f, 0.0f));
+        UpdatePosition(glm::vec3(-10.f, 0.0f, 0.0f) * deltaTime);
         //rotationAngle+=1;
         updateModelMatrix();  
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
     {    
-        UpdatePosition(glm::vec3(0.1f, 0.0f, 0.0f));         
+        UpdatePosition(glm::vec3(10.f, 0.0f, 0.0f) * deltaTime);
         //rotationAngle-=1;
         updateModelMatrix();  
     }
@@ -92,6 +92,24 @@ void Cube::SetRotation(float angle, glm::vec3 axis)
         rotationAxis = axis; 
         updateModelMatrix(); 
     }*/
+}
+
+void Cube::npcMovement(float deltaTime)
+{
+    UpdatePosition(glm::vec3(xValue, 0.0f, -0.67 * pow(xValue, 2) + 5.83 * xValue - 7.00) * deltaTime);
+
+    updateModelMatrix();
+
+    xValue-- * deltaTime;
+}
+
+void Cube::npcMovementReverse(float deltaTime)
+{
+    UpdatePosition(glm::vec3(xValue, 0.0f, -0.67 * pow(xValue, 2) + 5.83 * xValue - 7.00) * deltaTime);
+
+    updateModelMatrix();
+
+    xValue++ * deltaTime;
 }
 
 void Cube::CleanUp()
