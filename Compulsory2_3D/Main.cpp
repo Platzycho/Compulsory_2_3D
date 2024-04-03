@@ -97,8 +97,6 @@ int main() {
 	glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
 	glm::mat4 view = glm::lookAt(camPosition, camPosition + cameraDirection, up);
 
-
-
     CallbackData callbackData;
     callbackData.myShader = &myShader;
     callbackData.myCamera = &camera;
