@@ -5,12 +5,14 @@
 #include "glm/gtc/type_ptr.hpp"
 #include "Shader.h"
 #include "Camera.h"
-#include "Cube.h"
-#include "Trophy.h"
+#include "Object.h"
 #include "Plane.h"
+#include "Player.h"
 #include <iostream>
 #include <algorithm>
 #include <cmath>
+
+bool Player::npcPath = false;
 
 struct CallbackData {
     Shader* myShader;
@@ -18,19 +20,13 @@ struct CallbackData {
 };
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-
 void processInput(GLFWwindow* window);
-
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 Camera camera(glm::vec3(-0.0589525f, 11.9224f, 12.7897f));
-
 glm::vec3 camPosition = glm::vec3(-0.0589525f, 11.9224f, 12.7897f);
-
 glm::vec3 cameraDirection = glm::vec3(0.0f, -1.0f, -1.0f);
-
 glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 
 float deltaTime = 0.0f;
@@ -68,31 +64,34 @@ int main() {
     //House
 
 
-    Cube backWall(6.0f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.0f, -2.0f); 
+    Object backWall(0, 6.0f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.0f, -2.0f); 
+    Object leftWall(0, 0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, -2.85f, 1.0f, 0.0f);
+    Object rightWall(0, 0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, 2.85f, 1.0f, 0.0f); 
+    Object frontLeftWall(0, 2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, -1.75f, 1.0f, 2.0f);
+    Object frontRightWall(0, 2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 1.75f, 1.0f, 2.0f);
+    Object aboveDoorWall(0, 1.0f, 0.5f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.8f, 2.0f);
+    Object flatRoof(0, 5.7f, 0.3f, 3.7f, 0.349f, 0.196f, 0.0f, 0.0f, 2.0f, 0.0f);
+    Object door(0, 1.0f, 1.5f, 0.3f, 0.659f, 0.373f, 0.0f, 0.0f, 0.75f, 2.0f);
 
-    Cube leftWall(0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, -2.85f, 1.0f, 0.0f);
+    Player myPlayer(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 4.0f, 0.15f, 4.0f);
+    Object npcCharacter(0, 0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 3.0f, 0.15f, 3.0f);
 
-    Cube rightWall(0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, 2.85f, 1.0f, 0.0f); 
+    Object trophy(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -2.0f, 0.15f, 3.0f);
+    Object trophy2(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -4.0f, 0.15f, 3.0f);
+    Object trophy3(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -2.0f, 0.15f, 5.0f);
+    Object trophy4(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 2.0f, 0.15f, 5.0f);
+    Object trophy5(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 5.0f, 0.15f, 3.0f);
+    Object trophy6(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 6.0f, 0.15f, 3.0f);
+    Object trophy7(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -4.0f, 0.15f, -3.0f);
 
-    Cube frontLeftWall(2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, -1.75f, 1.0f, 2.0f); 
-
-    Cube frontRightWall(2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 1.75f, 1.0f, 2.0f); 
-
-    Cube aboveDoorWall(1.0f, 0.5f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.8f, 2.0f); 
-
-    Cube flatRoof(5.7f, 0.3f, 3.7f, 0.349f, 0.196f, 0.0f, 0.0f, 2.0f, 0.0f); 
-
-    Cube door(1.0f, 1.5f, 0.3f, 0.659f, 0.373f, 0.0f, 0.0f, 0.75f, 2.0f); 
-
-    Cube myPlayer(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 4.0f, 0.15f, 4.0f);
-
-    Cube npcCharacter(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 3.0f, 0.15f, 3.0f);
-
-
-    Trophy trophies; 
-
-    std::cout << Cube::cubes.size() << std::endl;
-     
+    trophy.isTrophy();
+    trophy2.isTrophy();
+    trophy3.isTrophy();
+    trophy4.isTrophy();
+    trophy5.isTrophy();
+    trophy6.isTrophy();
+    trophy7.isTrophy();
+    
     Plane myPlane; 
 
     cameraDirection = glm::normalize(cameraDirection);
@@ -105,13 +104,9 @@ int main() {
     callbackData.myCamera = &camera;
 
     glfwSetScrollCallback(window, scroll_callback);
-
     glfwSetWindowUserPointer(window, &callbackData);
-
     glfwSetCursorPosCallback(window, mouse_callback);
-
     glEnable(GL_DEPTH_TEST);
-
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	while(!glfwWindowShouldClose(window))
@@ -123,13 +118,10 @@ int main() {
         myPlayer.PlayerInput(window, deltaTime);
 
 		glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);/*
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);*/
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-		myShader.use();
-
-      
-        // Camera/View transformation
+		myShader.use();     
         
 	    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
         //glm::mat4 view = camera.GetViewMatrix();
@@ -139,6 +131,8 @@ int main() {
 
         myShader.setMat4("projection", projection);
         myShader.setMat4("view", view);
+
+        npcCharacter.UpdateNpcPosition(deltaTime);
 
         myPlane.Draw();
         backWall.Draw(myShader);
@@ -150,49 +144,39 @@ int main() {
         door.Draw(myShader);
         flatRoof.Draw(myShader);
         npcCharacter.Draw(myShader);
+
+        trophy.Draw(myShader);
+        trophy2.Draw(myShader);
+        trophy3.Draw(myShader);
+        trophy4.Draw(myShader);
+        trophy5.Draw(myShader);
+        trophy6.Draw(myShader);
+        trophy7.Draw(myShader);
         
-
         myPlayer.Draw(myShader);
-
-        trophies.Draw(myShader);
-
-        /*if (Cube::xValue <= 0.f && Cube::xValue > -5.f) {
-            npcCharacter.npcMovement(deltaTime);
-
-        }*/
-      /*  else if (Cube::xValue >= -5.f && Cube::xValue < 0.f) {
-
-            npcCharacter.npcMovementReverse(deltaTime);
-        }*/
-
-      /*  std::cout << camera.Position.x  << ", " << camera.Position.y << ", " << camera.Position.z <<  std::endl;*/
-          for(size_t i = 0; i < Cube::cubes.size(); ++i) {
-          for(size_t j = i + 1; j < Cube::cubes.size(); ++j) {
-            if(Cube::collisionDetection(Cube::cubes[i], Cube::cubes[j])) {
-
-            // Handle collision
-               
-        }
-    }
-}
+     
         glfwSwapBuffers(window);
-        glfwPollEvents();
-       
-		
+        glfwPollEvents();	
 	}
 
-  /*cube.CleanUp();
-    cube2.CleanUp();*/
-    backWall.CleanUp();
-    leftWall.CleanUp();
-    rightWall.CleanUp();
-    frontLeftWall.CleanUp();
-    frontRightWall.CleanUp();
-    aboveDoorWall.CleanUp();
-    door.CleanUp();
-    flatRoof.CleanUp(); 
-    npcCharacter.~Cube();
-    myPlayer.~Cube(); 
+    backWall.~Object();
+    leftWall.~Object();
+    rightWall.~Object();
+    frontLeftWall.~Object();
+    frontRightWall.~Object();
+    aboveDoorWall.~Object();
+    door.~Object();
+    flatRoof.~Object();
+    npcCharacter.~Object();
+    myPlayer.~Player(); 
+
+    trophy.~Object();
+    trophy2.~Object();
+    trophy3.~Object();
+    trophy4.~Object();
+    trophy5.~Object();
+    trophy6.~Object();
+    trophy7.~Object();
 
 	glfwTerminate();
 	return 0;
