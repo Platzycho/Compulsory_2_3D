@@ -62,8 +62,6 @@ int main() {
     Shader myShader("shader.vs", "shader.fs");
 
     //House
-
-
     Object backWall(0, 6.0f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.0f, -2.0f); 
     Object leftWall(0, 0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, -2.85f, 1.0f, 0.0f);
     Object rightWall(0, 0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, 2.85f, 1.0f, 0.0f); 
@@ -91,6 +89,8 @@ int main() {
     trophy5.isTrophy();
     trophy6.isTrophy();
     trophy7.isTrophy();
+
+    door.isDoor();
     
     Plane myPlane; 
 
@@ -132,7 +132,7 @@ int main() {
         myShader.setMat4("projection", projection);
         myShader.setMat4("view", view);
 
-        npcCharacter.UpdateNpcPosition(deltaTime);
+        //npcCharacter.UpdateNpcPosition(deltaTime);
 
         myPlane.Draw();
         backWall.Draw(myShader);
@@ -143,7 +143,7 @@ int main() {
         aboveDoorWall.Draw(myShader);
         door.Draw(myShader);
         flatRoof.Draw(myShader);
-        npcCharacter.Draw(myShader);
+       // npcCharacter.Draw(myShader);
 
         trophy.Draw(myShader);
         trophy2.Draw(myShader);
@@ -198,8 +198,6 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 void processInput(GLFWwindow* window)
 {	
     //Camera movement
-	
-
 	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
 }
@@ -225,8 +223,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     if (data && data->myCamera) {
         data->myCamera->ProcessMouseMovement(xoffset, yoffset);
     }
-    
-
+   
 }
 
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)

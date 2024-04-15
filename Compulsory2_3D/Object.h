@@ -22,11 +22,15 @@ public:
 	void SetRotation(float angle, glm::vec3 axis);
 	void GenerateCube(float w, float h, float d, float r, float g, float b);
 	void isTrophy();
+	void isDoor();
 	void BEGONE_THOT(float x, float y, float z);
+	void rotateDoor();
 	Collision getCollisionData() const;
 
 	// const NPCPath& path, float deltaTime
 	bool trophy = false;
+	bool door = false;
+	bool doorOpened = false;
 
 private:
 	unsigned int VAO, VBO, EBO;

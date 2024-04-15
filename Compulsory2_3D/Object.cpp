@@ -54,7 +54,7 @@ void Object::UpdateNpcPosition(float deltaTime)
         updateModelMatrix();
     }
 
-    std::cout << position.z << std::endl;
+    //std::cout << position.z << std::endl;
 
     if (parameter >= 3.2f) {
         parameter = 3.2f;
@@ -142,10 +142,32 @@ void Object::isTrophy()
     trophy = true;
 }
 
+void Object::isDoor()
+{
+    door = true;
+}
+
 void Object::BEGONE_THOT(float x, float y, float z)
 {
-    position = glm::vec3(x, y, z);
+    position = glm::vec3(x, y, z);    
     updateModelMatrix();
+}
+
+void Object::rotateDoor()
+{
+    if (doorOpened == false) {
+        rotationAxis = glm::vec3(0.0f, 1.0f, 0.0f);
+        rotationAngle = 90;
+        position = position + glm::vec3(0.6f, 0.0f, 0.3f);
+        updateModelMatrix();
+    }
+    else if (doorOpened == true) {
+        rotationAxis = glm::vec3(0.0f, 1.0f, 0.0f);
+        rotationAngle = 0;
+        position = position + glm::vec3(-0.6f, 0.0f, -0.3f);
+        updateModelMatrix();
+    }
+    
 }
 
 void Object::setupMesh()

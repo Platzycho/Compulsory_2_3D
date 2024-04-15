@@ -39,24 +39,26 @@ void Player::UpdatePosition(glm::vec3 direction)
 		if (CheckAABBCollision(playerBox, CalculateAABB(object->getCollisionData()))) {
 			collisionDetected = true;
 
-			if (interact == true) {
-				object->BEGONE_THOT(1000.f, 1000.f, 1000.f);
+			if (object->doorOpened == true && interact == true && object->door == true) {
+				object->rotateDoor();
+				object->doorOpened = false;
 				break;
+			} else if (object->doorOpened == false && buttonState == false && interact == true) {
+						object->rotateDoor();
+						object->doorOpened = true;
+						buttonState = true;
+						break;
 			}
-			if (object->trophy == true) {
-				object->BEGONE_THOT(1000.f, 1000.f, 1000.f);
-				trophyCollected += 1;
-				std::cout << "Collected: " << trophyCollected << " trophies!" << std::endl;
-				break;	
-			}
-			else {
-				break;
-			}
-			
+		} 
+		if (object->trophy == true) {
+			object->BEGONE_THOT(1000.f, 1000.f, 1000.f);
+			trophyCollected += 1;
+			std::cout << "Collected: " << trophyCollected << " trophies!" << std::endl;
+			break;
+		} else {
+			break;
 		}
-
-	}
-
+	}						
 	//std::cout << collisionDetected << std::endl;
 
 	if (!collisionDetected) {
@@ -92,11 +94,15 @@ void Player::PlayerInput(GLFWwindow* window, float deltaTime)
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_PRESS) {
-		interact = true;
+
+		//std::cout << "pressed" << std::endl;
+			interact = true;		
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_E) == GLFW_RELEASE) {
+		//std::cout << "release" << std::endl;
 		interact = false;
+		buttonState = false;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {

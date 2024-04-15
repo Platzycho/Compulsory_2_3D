@@ -22,8 +22,8 @@ struct AABB {
 
 inline AABB CalculateAABB(const Collision& object) {
 	AABB box;
-	box.min = object.position - object.size * 0.5f;
-	box.max = object.position + object.size * 0.5f;
+	box.min = object.position - object.size * 0.3f;
+	box.max = object.position + object.size * 0.3f;
 	return box;
 }
 

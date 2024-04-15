@@ -22,6 +22,7 @@ public:
 	static bool npcPath;
 
 	bool interact = false;
+	bool buttonState = false;
 
 private:
 	unsigned int VAO, VBO, EBO;
