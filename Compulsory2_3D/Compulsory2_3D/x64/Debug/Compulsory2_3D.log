@@ -1,3 +1,2 @@
-﻿  Player.cpp
-C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Player.cpp(28,43): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+﻿  Scene.cpp
   Compulsory2_3D.vcxproj -> C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\x64\Debug\Compulsory2_3D.exe

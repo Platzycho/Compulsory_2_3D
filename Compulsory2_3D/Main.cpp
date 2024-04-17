@@ -8,11 +8,16 @@
 #include "Object.h"
 #include "Plane.h"
 #include "Player.h"
+#include "Scene.h"
 #include <iostream>
 #include <algorithm>
 #include <cmath>
 
+int Scene::scene = 0;
+
 bool Player::npcPath = false;
+
+int scene = 0;
 
 struct CallbackData {
     Shader* myShader;
@@ -61,38 +66,8 @@ int main() {
    
     Shader myShader("shader.vs", "shader.fs");
 
+    Scene sceneOne; 
     //House
-    Object backWall(0, 6.0f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.0f, -2.0f); 
-    Object leftWall(0, 0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, -2.85f, 1.0f, 0.0f);
-    Object rightWall(0, 0.3f, 2.0f, 3.7f, 0.349f, 0.196f, 0.0f, 2.85f, 1.0f, 0.0f); 
-    Object frontLeftWall(0, 2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, -1.75f, 1.0f, 2.0f);
-    Object frontRightWall(0, 2.5f, 2.0f, 0.3f, 0.349f, 0.196f, 0.0f, 1.75f, 1.0f, 2.0f);
-    Object aboveDoorWall(0, 1.0f, 0.5f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.8f, 2.0f);
-    Object flatRoof(0, 5.7f, 0.3f, 3.7f, 0.349f, 0.196f, 0.0f, 0.0f, 2.0f, 0.0f);
-    Object door(0, 1.0f, 1.5f, 0.3f, 0.659f, 0.373f, 0.0f, 0.0f, 0.75f, 2.0f);
-
-    Player myPlayer(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 4.0f, 0.15f, 4.0f);
-    Object npcCharacter(0, 0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 3.0f, 0.15f, 3.0f);
-
-    Object trophy(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -2.0f, 0.15f, 3.0f);
-    Object trophy2(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -4.0f, 0.15f, 3.0f);
-    Object trophy3(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -2.0f, 0.15f, 5.0f);
-    Object trophy4(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 2.0f, 0.15f, 5.0f);
-    Object trophy5(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 5.0f, 0.15f, 3.0f);
-    Object trophy6(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 6.0f, 0.15f, 3.0f);
-    Object trophy7(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -4.0f, 0.15f, -3.0f);
-
-    trophy.isTrophy();
-    trophy2.isTrophy();
-    trophy3.isTrophy();
-    trophy4.isTrophy();
-    trophy5.isTrophy();
-    trophy6.isTrophy();
-    trophy7.isTrophy();
-
-    door.isDoor();
-    
-    Plane myPlane; 
 
     cameraDirection = glm::normalize(cameraDirection);
 
@@ -115,13 +90,16 @@ int main() {
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		processInput(window);
-        myPlayer.PlayerInput(window, deltaTime);
+
+        sceneOne.sceneSwitch(scene);
+
+        sceneOne.referToPlayerController(window, deltaTime);
 
 		glClearColor(0.6f, 0.6f, 0.6f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
-		myShader.use();     
+		myShader.use();
         
 	    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)800 / (float)600, 0.1f, 100.0f);
         //glm::mat4 view = camera.GetViewMatrix();
@@ -132,52 +110,14 @@ int main() {
         myShader.setMat4("projection", projection);
         myShader.setMat4("view", view);
 
+        sceneOne.drawObjects(myShader);
         //npcCharacter.UpdateNpcPosition(deltaTime);
-
-        myPlane.Draw();
-        backWall.Draw(myShader);
-        leftWall.Draw(myShader);
-        rightWall.Draw(myShader);
-        frontLeftWall.Draw(myShader);
-        frontRightWall.Draw(myShader);
-        aboveDoorWall.Draw(myShader);
-        door.Draw(myShader);
-        flatRoof.Draw(myShader);
-       // npcCharacter.Draw(myShader);
-
-        trophy.Draw(myShader);
-        trophy2.Draw(myShader);
-        trophy3.Draw(myShader);
-        trophy4.Draw(myShader);
-        trophy5.Draw(myShader);
-        trophy6.Draw(myShader);
-        trophy7.Draw(myShader);
-        
-        myPlayer.Draw(myShader);
-     
+               
         glfwSwapBuffers(window);
         glfwPollEvents();	
 	}
 
-    backWall.~Object();
-    leftWall.~Object();
-    rightWall.~Object();
-    frontLeftWall.~Object();
-    frontRightWall.~Object();
-    aboveDoorWall.~Object();
-    door.~Object();
-    flatRoof.~Object();
-    npcCharacter.~Object();
-    myPlayer.~Player(); 
-
-    trophy.~Object();
-    trophy2.~Object();
-    trophy3.~Object();
-    trophy4.~Object();
-    trophy5.~Object();
-    trophy6.~Object();
-    trophy7.~Object();
-
+    sceneOne.~Scene();
 	glfwTerminate();
 	return 0;
 }
@@ -200,6 +140,15 @@ void processInput(GLFWwindow* window)
     //Camera movement
 	if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
+
+    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+    {
+        scene = 0;
+    }
+
+    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS) {
+        scene = 1;
+    }
 }
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)

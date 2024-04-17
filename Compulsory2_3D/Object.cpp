@@ -1,6 +1,7 @@
 #include "Object.h"
 #include "ObjectManager.h"
 #include "Player.h"
+#include "Scene.h"
 #include <iostream>
 int trophyAmount = 0;
 
@@ -31,11 +32,24 @@ Object::~Object()
 
 void Object::Draw(Shader& shader)
 {
+    if (Scene::scene == 0 && meshKey == 0) {
+        setupMesh();
+        updateModelMatrix();
+        meshKey = 1;
+
+    }
+    else if (Scene::scene == 1 && meshKey == 1) {
+        setupMesh();
+        updateModelMatrix();
+        meshKey = 0;
+
+    }
 	shader.use();
 	shader.setMat4("model", modelMatrix);
 	glBindVertexArray(VAO);
 	glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 	glBindVertexArray(0);
+
 }
 
 void Object::UpdateNpcPosition(float deltaTime)

@@ -43,28 +43,35 @@ void Player::UpdatePosition(glm::vec3 direction)
 				object->rotateDoor();
 				object->doorOpened = false;
 				break;
-			} else if (object->doorOpened == false && buttonState == false && interact == true) {
-						object->rotateDoor();
-						object->doorOpened = true;
-						buttonState = true;
-						break;
 			}
-		} 
-		if (object->trophy == true) {
-			object->BEGONE_THOT(1000.f, 1000.f, 1000.f);
-			trophyCollected += 1;
-			std::cout << "Collected: " << trophyCollected << " trophies!" << std::endl;
-			break;
-		} else {
-			break;
+			else if (object->doorOpened == false && buttonState == false && interact == true) {
+				object->rotateDoor();
+				object->doorOpened = true;
+				buttonState = true;
+				break;
+			}
+			if (object->trophy == true) {
+				object->BEGONE_THOT(1000.f, 1000.f, 1000.f);
+				trophyCollected += 1;
+				std::cout << "Collected: " << trophyCollected << " trophies!" << std::endl;
+				break;
+			}
+			else {
+				break;
+			}
 		}
-	}						
-	//std::cout << collisionDetected << std::endl;
+		
+
+		
+	}
 
 	if (!collisionDetected) {
 		position = tentativePosition;
 		updateModelMatrix();
 	}
+	//std::cout << collisionDetected << std::endl;
+
+	
 }
 
 void Player::PlayerInput(GLFWwindow* window, float deltaTime)

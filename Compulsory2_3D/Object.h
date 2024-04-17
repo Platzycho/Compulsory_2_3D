@@ -32,6 +32,8 @@ public:
 	bool door = false;
 	bool doorOpened = false;
 
+	
+
 private:
 	unsigned int VAO, VBO, EBO;
 	glm::vec3 position;
@@ -48,6 +50,8 @@ private:
 	float rotationAngle;
 
 	bool npcPath = false;
+
+	int meshKey = 0;
 
 	void setupMesh();
 	void updateModelMatrix();
