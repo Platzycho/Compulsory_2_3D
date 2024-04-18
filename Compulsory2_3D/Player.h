@@ -24,9 +24,11 @@ public:
 	bool interact = false;
 	bool buttonState = false;
 
+
+	glm::vec3 position;
+
 private:
 	unsigned int VAO, VBO, EBO;
-	glm::vec3 position;
 	glm::vec3 scale;
 	glm::mat4 modelMatrix;
 	glm::vec3 rotationAxis;

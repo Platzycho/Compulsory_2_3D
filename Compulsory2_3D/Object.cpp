@@ -21,6 +21,8 @@ Object::Object(int objectID, float width, float height, float depth, float r, fl
 	rotationAxis = glm::vec3(1.0f, 1.0f, 1.0f);
 	updateModelMatrix();
     ObjectManager::getInstance().addObject(this);
+    //createObject(objectID, width, height, depth, r, g, b, posX, posY, posZ);
+    
 }
 
 Object::~Object()
@@ -28,6 +30,7 @@ Object::~Object()
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
 	glDeleteBuffers(1, &EBO);
+    ObjectManager::getInstance().eraseObject();
 }
 
 void Object::Draw(Shader& shader)
@@ -183,6 +186,15 @@ void Object::rotateDoor()
     }
     
 }
+
+//std::unique_ptr<Object> Object::createObject(int objectID, float width, float height, float depth, float r, float g, float b, float posX, float posY, float posZ)
+//{
+//    auto obj = std::make_unique<Object>(objectID, width, height, depth, r, g, b, posX, posY, posZ);
+//
+//    ObjectManager::getInstance().addObject(std::move(obj));
+//
+//    return obj;
+//}
 
 void Object::setupMesh()
 {

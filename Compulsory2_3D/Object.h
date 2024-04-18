@@ -43,6 +43,8 @@ private:
 	std::vector<Vertex> vertices;
 	std::vector<unsigned int> indices;
 
+	//std::unique_ptr<Object> createObject(int objectID, float width, float height, float depth, float r, float g, float b, float posX, float posY, float posZ);
+
 	float parameter = 0.0f;
 	bool moving = true;
 	float speed = 1.f;

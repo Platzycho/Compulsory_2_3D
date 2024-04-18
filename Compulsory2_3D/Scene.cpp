@@ -44,17 +44,35 @@ Scene::Scene()
 
     //scene two
 
-    myOtherPlayer = new Player(0.3f, 0.3f, 0.3f, 0.7f, 0.7f, 0.7f, 4.0f, 0.15f, 4.0f);
+    myOtherPlayer = new Player(0.9f, 0.9f, 0.9f, 0.7f, 0.7f, 0.7f, 4.0f, 0.50f, 4.0f);
+
+    myOtherPlane = new Plane();
+
+    frontRightWallInside = new Object(0, 6.0f, 5.0f, 0.5f, 0.349f, 0.196f, 0.0f, 3.75f, 1.0f, 8.0f);
+    rightWallInside = new Object(0, 0.3f, 12.0f, 15.7f, 0.349f, 0.196f, 0.0f, 6.85f, 1.0f, 0.0f);
+    frontLeftWallInside = new Object(0, 6.0f, 5.0f, 0.5f, 0.349f, 0.196f, 0.0f, -3.75f, 1.0f, 8.0f);
+    leftWallInside = new Object(0, 0.3f, 12.0f, 15.7f, 0.349f, 0.196f, 0.0f, -6.85f, 1.0f, 0.0f);
+    insideTrophy = new Object(0, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, 0.3f, -4.0f, 0.15f, -3.0f);
+    backWallInside = new Object(0, 26.0f, 7.0f, 0.3f, 0.349f, 0.196f, 0.0f, 0.0f, 1.0f, -6.0f);
+    insideThing = new Object(0, 1.0f, 1.5f, 0.3f, 0.659f, 0.373f, 0.0f, 0.0f, 0.75f, 2.0f);
+
+    insideTrophy->isTrophy();
 }
 
 Scene::~Scene()
 {
+
     if (scene == 0) {
+        ObjectManager::getInstance().eraseObject();
         myOtherPlayer->~Player();
 
     }
     else if (scene == 1) {
-        backWall->~Object();
+        ObjectManager::getInstance().eraseObject();
+        myPlayer->~Player();
+        
+
+        /*backWall->~Object();
         leftWall->~Object();
         rightWall->~Object();
         frontLeftWall->~Object();
@@ -71,7 +89,9 @@ Scene::~Scene()
         trophy4->~Object();
         trophy5->~Object();
         trophy6->~Object(); 
-        trophy7->~Object();
+        trophy7->~Object();*/
+
+        
     }
 
     
@@ -82,8 +102,9 @@ Scene::~Scene()
 
 
 
-void Scene::drawObjects(Shader& myShader)
+void Scene::drawObjects(Shader& myShader, float deltaTime)
 {
+
     if (scene == 0) {
         myPlane->Draw();
         backWall->Draw(myShader);
@@ -94,7 +115,10 @@ void Scene::drawObjects(Shader& myShader)
         aboveDoorWall->Draw(myShader);
         door->Draw(myShader);
         flatRoof->Draw(myShader);
-        // npcCharacter.Draw(myShader);
+        npcCharacter->Draw(myShader);
+
+
+        npcCharacter->UpdateNpcPosition(deltaTime);
 
         trophy->Draw(myShader);
         trophy2->Draw(myShader);
@@ -107,7 +131,18 @@ void Scene::drawObjects(Shader& myShader)
         myPlayer->Draw(myShader);
     }
     else if (scene == 1) {
+
+        myOtherPlane->Draw();
+
         myOtherPlayer->Draw(myShader);
+
+
+        leftWallInside->Draw(myShader);
+        rightWallInside->Draw(myShader);
+        frontRightWallInside->Draw(myShader);
+        frontLeftWallInside->Draw(myShader);
+        backWallInside->Draw(myShader);
+        insideTrophy->Draw(myShader);
     }
     
 }

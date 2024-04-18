@@ -110,8 +110,7 @@ int main() {
         myShader.setMat4("projection", projection);
         myShader.setMat4("view", view);
 
-        sceneOne.drawObjects(myShader);
-        //npcCharacter.UpdateNpcPosition(deltaTime);
+        sceneOne.drawObjects(myShader, deltaTime);
                
         glfwSwapBuffers(window);
         glfwPollEvents();	

@@ -14,7 +14,7 @@ public:
 	Scene();
 	~Scene();
 
-	void drawObjects(Shader& mySshader);
+	void drawObjects(Shader& mySshader, float deltaTime);
 	void referToPlayerController(GLFWwindow* window, float deltaTime);
 
 	void sceneSwitch(int s);
@@ -22,6 +22,7 @@ public:
 
 	static int scene;
 private:
+	//Scene 1
 	Object* backWall;
 	Object* leftWall;
 	Object* rightWall;
@@ -40,10 +41,23 @@ private:
 	Object* npcCharacter;
 
 	Player* myPlayer;
-
-	Player* myOtherPlayer;
-
 	Plane* myPlane;
+
+	//scene 2
+	Player* myOtherPlayer;
+	Plane* myOtherPlane;
+
+	Object* frontRightWallInside;
+	Object* frontLeftWallInside;
+	Object* rightWallInside;
+	Object* leftWallInside;
+	Object* backWallInside;
+	Object* insideTrophy;
+	Object* insideThing;
+
+
+
+	
 
 };
 

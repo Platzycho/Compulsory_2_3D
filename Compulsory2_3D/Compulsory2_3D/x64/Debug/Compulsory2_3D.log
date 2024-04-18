@@ -1,2 +1,14 @@
-﻿  Scene.cpp
+﻿  Main.cpp
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(161,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(162,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(166,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(167,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(168,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(169,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Main.cpp(181,44): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Object.cpp
+C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\Object.cpp(53,43): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  Scene.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Compulsory2_3D.vcxproj -> C:\Users\Nesli\Documents\3D Prog\Compulsory_2\Compulsory_2_3D\Compulsory2_3D\x64\Debug\Compulsory2_3D.exe

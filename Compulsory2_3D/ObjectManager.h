@@ -29,6 +29,12 @@ public:
 		return objects;
 	}
 
+	void eraseObject() {
+		objects.clear();
+	}
+
+
+
 private:
 	std::vector<Object*> objects;
 
